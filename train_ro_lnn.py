@@ -4,7 +4,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import matplotlib
-matplotlib.use('macosx')
+import platform
+
+if platform.system() == 'Darwin':
+    try:
+        matplotlib.use('macosx')
+    except ImportError:
+        print("macosx backend not available; falling back to default.")
+
 
 import torch
 from torch.utils.data import DataLoader
